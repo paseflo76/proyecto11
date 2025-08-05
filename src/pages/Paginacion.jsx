@@ -33,5 +33,5 @@ const Paginacion = () => {
     </main>
   )
 }
-
+i
 export default Paginacion
