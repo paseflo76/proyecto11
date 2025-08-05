@@ -29,7 +29,7 @@ const Paginacion = () => {
         </Link>
       ))}
       {loading && <Loading />}
-      <div ref={loaderRef} style={{ height: '20px', width: '100%' }} />
+      <div ref={loaderRef} />
     </main>
   )
 }
