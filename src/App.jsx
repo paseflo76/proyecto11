@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import './app.css'
+import './App.css'
 
 import Paginacion from './pages/Paginacion'
 import Header from './Components/Header/Header'
