@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import useInfiniteScroll from '../utils/useInfiniteScroll'
 import './Paginacion.css'
-import Loading from '../Components/loading/loading'
+import Loading from '../Components/Loading/Loading.jsx'
 
 const Paginacion = () => {
   const { tipo } = useParams()
