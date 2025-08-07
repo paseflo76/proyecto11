@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: center;
   width: 90%;
+  height: 100vh;
 }
 
 .loading img {
-  width: 80%;
-  max-width: 400px;
+  width: 50%;
+  max-width: 300px;
   object-fit: cover;
   border: none;
 }

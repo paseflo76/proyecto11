@@ -9,7 +9,7 @@ const Paginacion = () => {
   const { data, loaderRef, loading } = useInfiniteScroll(
     `https://starwars-databank-server.vercel.app/api/v1/${tipo}`
   )
-
+  if (loading && data.length === 0) return <Loading />
   if (!data || data.length === 0) return null
 
   return (
@@ -33,5 +33,5 @@ const Paginacion = () => {
     </main>
   )
 }
-i
+
 export default Paginacion
