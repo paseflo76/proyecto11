@@ -9,7 +9,7 @@ const Detalle = () => {
   useEffect(() => {
     const fetchItem = async () => {
       const res = await fetch(
-        `https://starwars-databank-server.vercel.app/api/v1/${tipo}/${id}`
+        `/api/v1/${tipo}/${id}`
       )
       const json = await res.json()
       setItem(json)

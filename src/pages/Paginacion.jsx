@@ -6,9 +6,8 @@ import Loading from '../Components/Loading/Loading'
 const Paginacion = () => {
   const { tipo } = useParams()
 
-  const { data, loaderRef, loading } = useInfiniteScroll(
-    `https://starwars-databank-server.vercel.app/api/v1/${tipo}`
-  )
+  const { data, loaderRef, loading } = useInfiniteScroll(`/api/v1/${tipo}`)
+  
   if (loading && data.length === 0) return <Loading />
   if (!data || data.length === 0) return null
 
