@@ -7,7 +7,7 @@ const Paginacion = () => {
   const { tipo } = useParams()
 
   const { data, loaderRef, loading } = useInfiniteScroll(`/api/v1/${tipo}`)
-  
+
   if (loading && data.length === 0) return <Loading />
   if (!data || data.length === 0) return null
 
