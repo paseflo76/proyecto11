@@ -1,28 +1,35 @@
-import { useParams, Link } from 'react-router-dom'
-import useInfiniteScroll from '../utils/useInfiniteScroll'
-import Loading from '../components/Loading/Loading'
-import './Paginacion.css'
-
-const Paginacion = () => {
-  const { tipo } = useParams()
-  const { data, loaderRef, loading } = useInfiniteScroll(`https://starwars-databank-server.vercel.app/api/v1/${tipo}`)
-
-  return (
-    <main id='data-container'>
-      {data.map(item => (
-        <Link key={item._id} to={`/${tipo}/${item._id}`} className='data-card'>
-          <div className='cortina'>
-            <h2>{item.name}</h2>
-          </div>
-          <div className='data-image'>
-            <img src={item.image} alt={item.name} />
-          </div>
-        </Link>
-      ))}
-      {loading && <Loading />}
-      <div ref={loaderRef} style={{ height: '20px', width: '100%' }} />
-    </main>
-  )
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 0;
 }
 
-export default Paginacion
+.pagination button {
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.pagination button:hover {
+  background: #333;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination .active {
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
+}

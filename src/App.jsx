@@ -13,9 +13,13 @@ const App = () => {
       <Header />
 
       <Routes>
-        <Route path='/' element={<Navigate to='/characters' />} />
-        <Route path='/:tipo' element={<Paginacion />} />
-        <Route path='/:tipo/:id' element={<Detalle />} />
+        <Route path='/' element={<Navigate to='/character' />} />
+        <Route path='/character' element={<Paginacion />} />
+
+        <Route path='/status/:status' element={<Paginacion />} />
+        <Route path='/species/:species' element={<Paginacion />} />
+
+        <Route path='/character/:id' element={<Detalle />} />
       </Routes>
     </>
   )

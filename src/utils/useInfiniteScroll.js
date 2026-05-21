@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+/* import { useState, useEffect, useRef, useCallback } from 'react'
 
-const useInfiniteScroll = (urlBase) => {
+const BASE_URL = 'https://rickandmortyapi.com/api/character'
+
+const useInfiniteScroll = () => {
   const [page, setPage] = useState(1)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [hasMore, setHasMore] = useState(true)
 
   const loaderRef = useRef(null)
-  const totalRef = useRef(null)
   const controllerRef = useRef(null)
-  const urlRef = useRef(urlBase)
 
   const fetchData = useCallback(async () => {
     if (loading || !hasMore) return
@@ -20,44 +20,26 @@ const useInfiniteScroll = (urlBase) => {
     setLoading(true)
 
     try {
-      const res = await fetch(`${urlBase}?page=${page}`, {
+      const res = await fetch(`${BASE_URL}?page=${page}`, {
         signal: controllerRef.current.signal
       })
 
       const json = await res.json()
-      const newData = json.data || []
+      const newData = json.results || []
 
-      if (totalRef.current === null) {
-        totalRef.current = json.info?.total || 0
+      setData((prev) => [...prev, ...newData])
+
+      if (!json.info?.next) {
+        setHasMore(false)
+      } else {
+        setPage((p) => p + 1)
       }
-
-      setData((prev) => {
-        const combined = [...prev, ...newData]
-        if (combined.length >= totalRef.current) setHasMore(false)
-        return combined
-      })
-
-      if (newData.length > 0) setPage((p) => p + 1)
-      else setHasMore(false)
-
-    } catch (err) {
-      if (err.name !== 'AbortError') setHasMore(false)
+    } catch {
+      setHasMore(false)
     }
 
     setLoading(false)
-  }, [urlBase, page, hasMore, loading])
-
-  useEffect(() => {
-    if (urlBase !== urlRef.current) {
-      urlRef.current = urlBase
-      if (controllerRef.current) controllerRef.current.abort()
-
-      setPage(1)
-      setData([])
-      setHasMore(true)
-      totalRef.current = null
-    }
-  }, [urlBase])
+  }, [page, loading, hasMore])
 
   useEffect(() => {
     fetchData()
@@ -81,3 +63,4 @@ const useInfiniteScroll = (urlBase) => {
 }
 
 export default useInfiniteScroll
+ */

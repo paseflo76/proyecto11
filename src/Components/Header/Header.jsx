@@ -13,50 +13,76 @@ const Header = () => {
           alt='logo'
           className='star-wars-logo'
         />
+
         <img
           src='/assets/menu.png'
-          alt='Menú'
+          alt='menu'
           className='menu-icon'
           onClick={() => setOpen(!open)}
         />
       </div>
+
       <div className={`nav-links ${open ? 'show' : ''}`}>
+        {/* STATUS */}
+        <h4>Status</h4>
+
         <NavLink
-          to='/characters'
+          to='/status/Alive'
           className='link'
           onClick={() => setOpen(false)}
         >
-          Personajes
+          Alive
         </NavLink>
+
         <NavLink
-          to='/creatures'
+          to='/status/Dead'
           className='link'
           onClick={() => setOpen(false)}
         >
-          Criaturas
+          Dead
         </NavLink>
-        <NavLink to='/droids' className='link' onClick={() => setOpen(false)}>
-          Droides
-        </NavLink>
+
         <NavLink
-          to='/locations'
+          to='/status/unknown'
           className='link'
           onClick={() => setOpen(false)}
         >
-          Ubicaciones
+          Unknown
         </NavLink>
+
+        {/* SPECIES */}
+        <h4>Species</h4>
+
         <NavLink
-          to='/organizations'
+          to='/species/Human'
           className='link'
           onClick={() => setOpen(false)}
         >
-          Organizaciones
+          Human
         </NavLink>
-        <NavLink to='/species' className='link' onClick={() => setOpen(false)}>
-          Especies
+
+        <NavLink
+          to='/species/Alien'
+          className='link'
+          onClick={() => setOpen(false)}
+        >
+          Alien
         </NavLink>
-        <NavLink to='/vehicles' className='link' onClick={() => setOpen(false)}>
-          Vehículos
+
+        <NavLink
+          to='/species/Robot'
+          className='link'
+          onClick={() => setOpen(false)}
+        >
+          Robot
+        </NavLink>
+
+        <NavLink
+          to='/species/Humanoid'
+          className='link'
+          onClick={() => setOpen(false)}
+        >
+          Humanoid
         </NavLink>
       </div>
     </nav>
