@@ -20,18 +20,17 @@ const Detalle = () => {
   return (
     <main id='data-container'>
       <section className='data-card'>
-        <div className='cortina'>
-          <h1>{item.name}</h1>
-        </div>
-
-        <div className='data-image'>
-          <img src={item.image} alt={item.name} />
-        </div>
+        <h1>{item.name}</h1>
+        <img src={item.image} alt={item.name} />
       </section>
 
-      <p className='Detalle'>
-        {item.status} - {item.species}
-      </p>
+      <div className='Detalle'>
+        <p>Status: {item.status}</p>
+        <p>Species: {item.species}</p>
+        <p>Gender: {item.gender}</p>
+        <p>Origin: {item.origin?.name}</p>
+        <p>Location: {item.location?.name}</p>
+      </div>
     </main>
   )
 }
