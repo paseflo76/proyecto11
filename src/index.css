@@ -1,3 +1,4 @@
+/* FONT + RESET */
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 * {
@@ -8,86 +9,23 @@
   font-family: 'Bungee', sans-serif;
 }
 
+/* VARIABLES */
 :root {
   --primary-color: #000000;
   --secondary-color: #ffffff;
   --terciary-color: #b7b7eb;
-  --Quaternary-color: #e6c300;
-  --color-text: var(--Quaternary-color);
+  --Quaternary-color: #60759f;
+  --color-text: black;
 }
 
+/* BODY */
 body {
   background-color: var(--primary-color);
 }
+
+/* ROOT ONLY LAYOUT */
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-#data-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-  padding-top: 50px;
-}
-
-.data-card {
-  position: relative;
-  cursor: pointer;
-  border-radius: 15px;
-  overflow: hidden;
-  border: solid 2px var(--Quaternary-color);
-}
-
-.data-card h2 {
-  font-size: 35px;
-  text-align: center;
-  text-shadow: 4px 3px 0px #7a7a7a;
-}
-
-.data-card > .cortina {
-  height: 0px;
-  background-color: rgba(145, 143, 143, 0.26);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--Quaternary-color);
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-}
-
-.data-card:hover > .cortina {
-  height: 100%;
-  transition: height 0.5s;
-}
-
-.data-card > .data-image {
-  width: 500px;
-  height: 300px;
-}
-
-.data-card > .data-image > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-@media (max-width: 768px) {
-  #data-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .data-card {
-    width: 80%;
-  }
-
-  .data-card > .data-image {
-    width: 100%;
-    height: auto;
-  }
 }

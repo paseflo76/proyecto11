@@ -1,74 +1,122 @@
 .header {
+  width: 100%;
+  background-color: var(--Quaternary-color);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* TOP BAR */
+.top-bar {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.rick-morty-logo {
+  width: 55px;
+  border-radius: 100%;
+}
+
+/* TITLE */
+.Title {
+  flex: 1;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  width: 100%;
-  background-color: var(--Quaternary-color);
-  color: var(--color-text);
-  padding: 0 16px;
-  flex-wrap: wrap;
 }
 
-.header-title {
+.mobile-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--color-text);
+  display: block;
+}
+
+/* MENU */
+.header-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .menu-icon {
-  display: none;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 }
 
-.star-wars-logo {
-  width: 150px;
+/* NAV */
+.nav-links {
   display: none;
-  height: auto;
+
+  flex-direction: column;
+
+  gap: 30px;
+
+  width: 100%;
 }
 
-.nav-links {
+.nav-links.show {
   display: flex;
-  gap: 16px;
+}
+
+/* GROUP */
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nav-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+/* LINKS */
+.group-links {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 20px;
 }
 
 .link {
   color: var(--primary-color);
-  font-weight: normal;
+  font-size: 16px;
 }
 
 .link.active {
   border-bottom: 2px solid black;
 }
 
-@media (max-width: 768px) {
+/* DESKTOP */
+@media (min-width: 769px) {
   .menu-icon {
-    display: block;
-  }
-
-  .star-wars-logo {
-    display: block;
-    width: 100px;
+    display: none;
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--Quaternary-color);
-    padding: 10px 0;
-  }
-
-  .nav-links.show {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+
+    width: 100%;
   }
 
-  .link {
-    font-size: 14px;
-    padding: 8px 0;
+  .nav-group {
+    align-items: center;
   }
 }

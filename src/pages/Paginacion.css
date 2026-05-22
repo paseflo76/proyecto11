@@ -1,27 +1,54 @@
+/* GRID LAYOUT */
 #data-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
-  padding: 20px;
+  padding: 50px 20px;
   align-content: start;
 }
 
 /* CARD */
 .data-card {
-  background: #15151c;
-  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
   overflow: hidden;
-  text-decoration: none;
-  color: white;
+
+  background: #15151c;
+  border: 2px solid var(--Quaternary-color);
 }
 
-/* TITULO */
+/* TITULO OVERLAY */
 .cortina {
-  padding: 10px;
+  height: 0;
+  width: 100%;
+
+  background-color: rgba(145, 143, 143, 0.26);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--Quaternary-color);
+
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: height 0.4s ease;
 }
 
+.data-card:hover .cortina {
+  height: 100%;
+}
+
+/* TEXTO */
 .data-card h2 {
-  font-size: 14px;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 2px 2px 0px #000;
+  padding: 10px;
 
   white-space: nowrap;
   overflow: hidden;
@@ -32,8 +59,6 @@
 .data-image {
   width: 100%;
   aspect-ratio: 3 / 4;
-
-  overflow: hidden;
 }
 
 .data-image img {
@@ -45,22 +70,19 @@
 /* PAGINATION */
 .pagination {
   grid-column: 1 / -1;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+
   gap: 25px;
-  margin: 50px auto;
-  position: relative;
-  z-index: 10;
+  margin: 50px 0;
 }
 
 .pages-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-
   gap: 14px;
   max-width: 900px;
 }
@@ -73,18 +95,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border: none;
   border-radius: 14px;
-
-  background: #161616;
+  background: #3a3a55;
   color: white;
-
   cursor: pointer;
-
   font-size: 18px;
   font-weight: bold;
-
   transition: 0.25s;
 }
 
@@ -106,4 +122,15 @@
 
 .nav-btn:disabled {
   opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVE SOLO AQUÍ */
+@media (max-width: 768px) {
+  #data-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  .pages-container {
+    display: none;
+  }
 }

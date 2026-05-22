@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Loading from '../Components/Loading/Loading'
 import './Paginacion.css'
+
 const Paginacion = () => {
   const { status, species } = useParams()
 
@@ -10,17 +11,20 @@ const Paginacion = () => {
   const [pages, setPages] = useState(0)
   const [loading, setLoading] = useState(false)
 
-  let url = `https://rickandmortyapi.com/api/character?page=${page}`
-
-  if (status) url += `&status=${status}`
-  if (species) url += `&species=${species}`
+  const url = `https://rickandmortyapi.com/api/character?page=${page}${
+    status ? `&status=${status}` : ''
+  }${species ? `&species=${species}` : ''}`
 
   useEffect(() => {
+    let alive = true
+
     const fetchData = async () => {
       setLoading(true)
 
       const res = await fetch(url)
       const json = await res.json()
+
+      if (!alive) return
 
       setData(json.results || [])
       setPages(json.info?.pages || 0)
@@ -29,6 +33,10 @@ const Paginacion = () => {
     }
 
     fetchData()
+
+    return () => {
+      alive = false
+    }
   }, [url])
 
   const renderPages = () => {
@@ -51,21 +59,29 @@ const Paginacion = () => {
 
   return (
     <main id='data-container'>
-      {loading && <Loading />}
+      {loading && (
+        <div className='loading-wrapper'>
+          <Loading />
+        </div>
+      )}
 
-      {data.map((item) => (
-        <Link key={item.id} to={`/character/${item.id}`} className='data-card'>
-          <div className='cortina'>
-            <h2>{item.name}</h2>
-          </div>
+      {!loading &&
+        data.map((item) => (
+          <Link
+            key={item.id}
+            to={`/character/${item.id}`}
+            className='data-card'
+          >
+            <div className='cortina'>
+              <h2>{item.name}</h2>
+            </div>
 
-          <div className='data-image'>
-            <img src={item.image} alt={item.name} />
-          </div>
-        </Link>
-      ))}
+            <div className='data-image'>
+              <img src={item.image} alt={item.name} />
+            </div>
+          </Link>
+        ))}
 
-      {/* IMPORTANTE: dentro del grid */}
       <div className='pagination'>
         <button
           className='nav-btn'

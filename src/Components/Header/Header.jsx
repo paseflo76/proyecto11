@@ -7,83 +7,98 @@ const Header = () => {
 
   return (
     <nav className='header'>
-      <div className='header-title'>
-        <img
-          src='/assets/star-wars.png'
-          alt='logo'
-          className='star-wars-logo'
-        />
+      {/* TOP BAR */}
+      <div className='top-bar'>
+        {/* LOGO */}
+        <div className='header-left'>
+          <img src='/assets/logo.png' alt='logo' className='rick-morty-logo' />
+        </div>
 
-        <img
-          src='/assets/menu.png'
-          alt='menu'
-          className='menu-icon'
-          onClick={() => setOpen(!open)}
-        />
+        {/* TITLE */}
+        <div className='Title'>
+          <h1 className='mobile-title'>Rick and Morty</h1>
+        </div>
+
+        {/* MENU */}
+        <div className='header-right'>
+          <img
+            src='/assets/menu.png'
+            alt='menu'
+            className='menu-icon'
+            onClick={() => setOpen(!open)}
+          />
+        </div>
       </div>
 
+      {/* NAV */}
       <div className={`nav-links ${open ? 'show' : ''}`}>
         {/* STATUS */}
-        <h4>Status</h4>
+        <div className='nav-group'>
+          <div className='group-links'>
+            <h4 className='nav-title'>Status</h4>
+            <NavLink
+              to='/status/Alive'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Alive
+            </NavLink>
 
-        <NavLink
-          to='/status/Alive'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Alive
-        </NavLink>
+            <NavLink
+              to='/status/Dead'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Dead
+            </NavLink>
 
-        <NavLink
-          to='/status/Dead'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Dead
-        </NavLink>
-
-        <NavLink
-          to='/status/unknown'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Unknown
-        </NavLink>
+            <NavLink
+              to='/status/unknown'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Unknown
+            </NavLink>
+          </div>
+        </div>
 
         {/* SPECIES */}
-        <h4>Species</h4>
+        <div className='nav-group'>
+          <div className='group-links'>
+            <h4 className='nav-title'>Species</h4>
+            <NavLink
+              to='/species/Human'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Human
+            </NavLink>
 
-        <NavLink
-          to='/species/Human'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Human
-        </NavLink>
+            <NavLink
+              to='/species/Alien'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Alien
+            </NavLink>
 
-        <NavLink
-          to='/species/Alien'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Alien
-        </NavLink>
+            <NavLink
+              to='/species/Robot'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Robot
+            </NavLink>
 
-        <NavLink
-          to='/species/Robot'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Robot
-        </NavLink>
-
-        <NavLink
-          to='/species/Humanoid'
-          className='link'
-          onClick={() => setOpen(false)}
-        >
-          Humanoid
-        </NavLink>
+            <NavLink
+              to='/species/Humanoid'
+              className='link'
+              onClick={() => setOpen(false)}
+            >
+              Humanoid
+            </NavLink>
+          </div>
+        </div>
       </div>
     </nav>
   )
