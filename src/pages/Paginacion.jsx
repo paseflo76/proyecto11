@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Loading from '../Components/Loading/Loading'
-
+import './Paginacion.css'
 const Paginacion = () => {
   const { status, species } = useParams()
 
@@ -65,6 +65,7 @@ const Paginacion = () => {
         </Link>
       ))}
 
+      {/* IMPORTANTE: dentro del grid */}
       <div className='pagination'>
         <button
           className='nav-btn'
