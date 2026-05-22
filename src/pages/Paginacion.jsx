@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Loading from '../Components/Loading/Loading'
 
 const Paginacion = () => {
@@ -39,7 +39,7 @@ const Paginacion = () => {
         <button
           key={i}
           onClick={() => setPage(i)}
-          className={i === page ? 'active' : ''}
+          className={`page-btn ${i === page ? 'active' : ''}`}
         >
           {i}
         </button>
@@ -54,19 +54,32 @@ const Paginacion = () => {
       {loading && <Loading />}
 
       {data.map((item) => (
-        <div key={item.id} className='data-card'>
-          <h2>{item.name}</h2>
-          <img src={item.image} alt={item.name} />
-        </div>
+        <Link key={item.id} to={`/character/${item.id}`} className='data-card'>
+          <div className='cortina'>
+            <h2>{item.name}</h2>
+          </div>
+
+          <div className='data-image'>
+            <img src={item.image} alt={item.name} />
+          </div>
+        </Link>
       ))}
 
       <div className='pagination'>
-        <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>Prev</button>
+        <button
+          className='nav-btn'
+          onClick={() => setPage((p) => Math.max(p - 1, 1))}
+        >
+          ‹
+        </button>
 
-        {renderPages()}
+        <div className='pages-container'>{renderPages()}</div>
 
-        <button onClick={() => setPage((p) => Math.min(p + 1, pages))}>
-          Next
+        <button
+          className='nav-btn'
+          onClick={() => setPage((p) => Math.min(p + 1, pages))}
+        >
+          ›
         </button>
       </div>
     </main>
